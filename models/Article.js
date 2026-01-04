@@ -8,11 +8,6 @@ const articleSchema = new mongoose.Schema(
       trim: true,
       maxlength: [200, 'Title cannot exceed 200 characters'],
     },
-    slug: {
-      type: String,
-      unique: true,
-      lowercase: true,
-    },
     excerpt: {
       type: String,
       maxlength: [500, 'Excerpt cannot exceed 500 characters'],
