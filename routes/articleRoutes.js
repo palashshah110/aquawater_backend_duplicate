@@ -13,19 +13,33 @@ const {
   getRelatedArticles,
 } = require('../controllers/articleController.js');
 
-// Public routes
-router.get('/', getArticles);
+/* =========================
+   ADMIN ROUTES (FIRST)
+========================= */
+router.get('/admin/all', getAllArticlesAdmin);
+
+/* =========================
+   STATIC ROUTES
+========================= */
 router.get('/categories', getArticleCategories);
 router.get('/tags', getArticleTags);
 
-// Admin routes (in production, add auth middleware)
-router.get('/admin/all', getAllArticlesAdmin);
+/* =========================
+   CRUD ROUTES
+========================= */
 router.post('/', uploadArticleImage, createArticle);
 router.put('/:id', uploadArticleImage, updateArticle);
 router.delete('/:id', deleteArticle);
 
-// Single article routes (must be after other specific routes)
-router.get('/:idOrSlug', getArticleById);
+/* =========================
+   RELATED (MORE SPECIFIC)
+========================= */
 router.get('/:id/related', getRelatedArticles);
+
+/* =========================
+   GENERIC (LAST)
+========================= */
+router.get('/:idOrSlug', getArticleById);
+router.get('/', getArticles);
 
 module.exports = router;
