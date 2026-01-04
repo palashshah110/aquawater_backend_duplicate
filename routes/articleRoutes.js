@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { uploadArticleImage } = require('../config/cloudinary');
+const { uploadArticleImage } = require('../config/cloudinary.js');
 const {
   getArticles,
   getAllArticlesAdmin,
