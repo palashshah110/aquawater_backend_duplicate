@@ -19,7 +19,6 @@ const productSchema = new mongoose.Schema(
     },
     price: {
       type: Number,
-      required: [true, 'Price is required'],
       min: [0, 'Price cannot be negative'],
     },
     discountPrice: {
@@ -30,11 +29,9 @@ const productSchema = new mongoose.Schema(
       {
         url: {
           type: String,
-          required: true,
         },
         publicId: {
           type: String,
-          required: true,
         },
       },
     ],
@@ -51,7 +48,6 @@ const productSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      required: [true, 'Description is required'],
       maxlength: [2000, 'Description cannot exceed 2000 characters'],
     },
     shortDescription: {
@@ -84,7 +80,6 @@ const productSchema = new mongoose.Schema(
     },
     stock: {
       type: Number,
-      required: [true, 'Stock is required'],
       default: 0,
       min: [0, 'Stock cannot be negative'],
     },
