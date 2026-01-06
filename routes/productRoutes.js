@@ -3,7 +3,6 @@ const router = express.Router();
 const {
   getProducts,
   getProductById,
-  getProductBySlug,
   createProduct,
   updateProduct,
   deleteProduct,
@@ -43,7 +42,6 @@ const handleProductUpload = (req, res, next) => {
 // Public routes
 router.get('/', getProducts);
 router.get('/categories', authenticateToken, getCategories);
-router.get('/slug/:slug', authenticateToken, getProductBySlug);
 router.get('/:id', getProductById);
 
 router.post('/', authenticateToken,handleProductUpload, createProduct);

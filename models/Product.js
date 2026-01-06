@@ -8,11 +8,6 @@ const productSchema = new mongoose.Schema(
       trim: true,
       maxlength: [200, 'Name cannot exceed 200 characters'],
     },
-    slug: {
-      type: String,
-      unique: true,
-      lowercase: true,
-    },
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Category',
@@ -107,16 +102,6 @@ const productSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
-// Create slug from name before saving
-productSchema.pre('save', function () {
-  if (this.isModified('name')) {
-    this.slug = this.name
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '');
-  }
-});
 
 // Index for search
 productSchema.index({ name: 'text', description: 'text'});

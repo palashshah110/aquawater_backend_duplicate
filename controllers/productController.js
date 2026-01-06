@@ -114,33 +114,6 @@ const getProductById = async (req, res) => {
   }
 };
 
-// @desc    Get product by slug
-// @route   GET /api/products/slug/:slug
-// @access  Public
-const getProductBySlug = async (req, res) => {
-  try {
-    const product = await Product.findOne({ slug: req.params.slug });
-
-    if (!product) {
-      return res.status(404).json({
-        success: false,
-        message: 'Product not found',
-      });
-    }
-
-    res.json({
-      success: true,
-      data: product,
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Error fetching product',
-      error: error.message,
-    });
-  }
-};
-
 // @desc    Create product
 // @route   POST /api/products
 // @access  Private/Admin
@@ -413,7 +386,6 @@ const getCategories = async (req, res) => {
 module.exports = {
   getProducts,
   getProductById,
-  getProductBySlug,
   createProduct,
   updateProduct,
   deleteProduct,
