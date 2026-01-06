@@ -10,15 +10,9 @@ const { handleValidationErrors } = require('../middlewares/validate.js');
 
 // Validation rules
 const validateLogin = [
-  body('email')
-    .isEmail()
-    .normalizeEmail()
-    .withMessage('Valid email is required'),
   body('password')
     .notEmpty()
-    .withMessage('Password is required')
-    .isLength({ min: 6 })
-    .withMessage('Password must be at least 6 characters'),
+    .withMessage('Password is required'),
   handleValidationErrors
 ];
 
