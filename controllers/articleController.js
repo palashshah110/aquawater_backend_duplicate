@@ -139,7 +139,7 @@ const getArticleById = async (req, res) => {
     } else {
       article = await Article.findOne({ slug: idOrSlug });
     }
-
+    console.log(article);
     if (!article) {
       return res.status(404).json({
         success: false,
